@@ -71,3 +71,7 @@ echo "The name of the user is $2"
 
 # sh script.sh 10 20 30     # pass values 
 #              $1 $2 $3
+
+
+## will print all the declared cli varibales $* 
+echo "clli varaibles used are $*"
