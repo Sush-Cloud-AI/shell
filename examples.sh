@@ -125,4 +125,6 @@ source ./ext_func.sh
 echo "calling a fuction from external file"
 ext_fun
 
+#stat $? ----> to find the status of the last executed command 0 is sucess 
+#and rest is failure .. we can assign a failure code 1,2,3, for stageing in script 
 ##---------------------------------------
