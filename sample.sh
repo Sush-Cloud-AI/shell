@@ -63,3 +63,11 @@ echo "The number of users signed in are $(who | wc -l)"
 # $0 to $n , $*, $@, $#, $$
 
 echo "script we are exeuting is $0"
+
+# # Through command line we can pass upto 9 variables
+
+echo "The value of x is $1"
+echo "The name of the user is $2"
+
+# sh script.sh 10 20 30     # pass values 
+#              $1 $2 $3
