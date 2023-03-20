@@ -39,4 +39,19 @@ echo "THis is a undefined variable $c"
 
 # declaring value in command line are environment variables 
 
-echo " The value of D is $d"
+echo "The value of D is $d"
+
+##"export d=100"
+
+#if enter d=100 in the coomand line of the machine and print it with echo$d it will print
+# but the script wont take it 
+ # for the script to pick the value we have to execute it with export d=100 
+ ## if we log on and off the machine the value decleared in env will be deleted
+
+# always local(inside script) var >> env variabl(command line)
+
+## dynamic output
+
+date_command=$(date +%F)
+echo "Todays date id $date_command"
+echo "The number of users signed in are $(who | wc -l)"
