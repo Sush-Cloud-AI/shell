@@ -130,15 +130,4 @@ ext_fun
 ##---------------------------------------
 
 
-read input_srting
 
-case $input_srting in
-    hello)
-        echo "hello sam"
-        ;;
-    bye)
-        echo "bye see you again"
-        ;;
-    *)
-        echo "I dont understand type hello or bye"
-esac
