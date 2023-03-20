@@ -95,3 +95,13 @@ first_fun(){
 first_fun
 sleep 3
 first_fun
+
+
+# calling a function inside function
+nest_func(){
+    echo "this is nest_function"
+    first_fun
+
+}
+
+nest_func
