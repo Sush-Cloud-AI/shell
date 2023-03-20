@@ -20,7 +20,15 @@ echo -e "\e[35mI am Maganta\e[0m"
 
 # forefround clour
 echo -e "\e[45;33mI am yellow\e[0m"
-
-#echo -e "\n"
-
 echo -e "\e[46;31mI am Red\e[0m"
+
+# varaiables
+# local variables
+a=10
+b=abc
+
+# when to use quotes --- when input has special character 
+
+echo $a
+echo $b
+echo ${b}   # same as $b
