@@ -128,3 +128,17 @@ ext_fun
 #stat $? ----> to find the status of the last executed command 0 is sucess 
 #and rest is failure .. we can assign a failure code 1,2,3, for stageing in script 
 ##---------------------------------------
+
+
+read input_srting
+
+case $input_srting in
+    hello)
+        echo "hello sam"
+        ;;
+    bye)
+        echo "bye see you again"
+        ;;
+    *)
+        echo "I dont understand type hello or bye"
+esac
