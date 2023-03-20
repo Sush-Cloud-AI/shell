@@ -75,3 +75,6 @@ echo "The name of the user is $2"
 
 ## will print all the declared cli varibales $* 
 echo "clli varaibles used are $*"
+
+# will print the count of the cli variables
+echo " the number of cli variables are $#"
