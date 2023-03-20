@@ -111,7 +111,18 @@ nest_func
 
 stat(){
     echo "The average load from 15 minutes is $(uptime  | awk -F : '{print $NF}' | awk -F , '{print $3}')"
-    echo " the number of connected users are $(who | wc -l) "
+    echo "The number of connected users are $(who | wc -l) "
 }
 
 stat
+
+### calling a function from external file 
+
+### to call the function we need to source the path of the file from 
+## which the function is called
+source ./ext_func.sh
+
+echo "calling a fuction from external file"
+ext_fun
+
+##---------------------------------------
