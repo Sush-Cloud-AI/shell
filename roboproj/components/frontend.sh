@@ -1,15 +1,19 @@
 #!/bin/bash
 set -e # will exit the script if there is an error
 
-
-#COMPONENT=frontend
+COMPONENT=frontend
+LOG_FILE="/tmp/$COMPONENT.log"
 
 source components/common.sh   # validating if its a root user in common.sh
 
-
-
-
+echo -n "Installing Nginx: " &>> $LOG_FILE  # -n : cursor wont move to the next line
 yum install nginx -y
+
+if [ $? -eq 0 ] ; then
+    echo -e  "\e[32m SUCCESS. \e[0m"
+else
+    echo -e  "\e[31m FAILURE. \e[0m"
+fi
 # systemctl enable nginx
 # systemctl start nginx
 
