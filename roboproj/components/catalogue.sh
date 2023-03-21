@@ -48,9 +48,9 @@ mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.ser
 stat $?
 
 echo -n "Starting $COMPONENT service: "
-systemctl daemon-reload
-systemctl restart $COMPONENT
-systemctl enable $COMPONENT
+systemctl daemon-reload &>> $LOG_FILE
+systemctl restart $COMPONENT &>> $LOG_FILE
+systemctl enable $COMPONENT &>> $LOG_FILE
 stat $?
 
 echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
