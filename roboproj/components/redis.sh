@@ -8,7 +8,7 @@ APP_USER=roboshop
 
 
 echo -n "Downloading $COMPONENT repo: "
-curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
+curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> $LOG_FILE
 stat $?
 
 
