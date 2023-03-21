@@ -17,7 +17,8 @@ yum install -y mongodb-org  &>> $LOG_FILE
 stat $?
 
 echo -n "Upadting $COMPONENT Listening address: "
-sed -e -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+stat $?
 
 echo -n "Starting and enabling $COMPONENT: "
 systemctl enable mongod  &>> $LOG_FILE
