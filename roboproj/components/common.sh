@@ -16,3 +16,11 @@ stat (){
         echo -e  "\e[31m FAILURE. \e[0m"
     fi
 }
+
+service_start(){
+    echo -n "Starting $COMPONENT service: "
+    systemctl daemon-reload &>> $LOG_FILE
+    systemctl restart $COMPONENT &>> $LOG_FILE
+    systemctl enable $COMPONENT &>> $LOG_FILE
+    stat $?
+}

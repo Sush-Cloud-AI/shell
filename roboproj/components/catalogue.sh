@@ -47,10 +47,7 @@ sed -i -e 's/MONGO_DNSNAME/mongodb.$APP_USER.internal/' systemd.service
 mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 stat $?
 
-echo -n "Starting $COMPONENT service: "
-systemctl daemon-reload &>> $LOG_FILE
-systemctl restart $COMPONENT &>> $LOG_FILE
-systemctl enable $COMPONENT &>> $LOG_FILE
-stat $?
+service_start
+
 
 echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
