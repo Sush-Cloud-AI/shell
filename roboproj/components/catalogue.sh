@@ -28,14 +28,14 @@ curl -s -L -o /tmp/catalogue.zip $COMPONENT_URL  &>> $LOG_FILE
 stat $?
 
 echo -n "Performing cleanup: "
-cd /home/$APP_USER/ && rm -rf $COMPONENT &>> $LOG_FILE
+cd /home/${APP_USER}/ && rm -rf ${COMPONENT} &>> $LOG_FILE
 stat $?
 
 echo -n "Extracting the $COMPONENT: "
 cd /home/roboshop
-unzip -o /tmp/catalogue.zip &>> $LOG_FILE
-mv $COMPONENT-main $COMPONENT && chown -R $APP_USER:$APP_USER $COMPONENT
-cd $COMPONENT
+unzip -o /tmp/${COMPONENT}.zip &>> $LOG_FILE
+mv ${COMPONENT}-main ${COMPONENT} && chown -R $APP_USER:$APP_USER $COMPONENT
+cd ${COMPONENT}
 stat $?
 
 echo -n "Installing the $COMPONENT: "
@@ -43,11 +43,11 @@ npm install &>> $LOG_FILE
 stat $?
 
 echo -n "Configuring the service: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.$APP_USER.internal/' systemd.service
-mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' systemd.service
+mv /home/$APP_USER/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
-service_start
+service_start    # service start function
 
 
 echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
