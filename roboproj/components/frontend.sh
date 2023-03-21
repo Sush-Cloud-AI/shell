@@ -1,13 +1,11 @@
 #!/bin/bash
-set -e 
+set -e # will exit the script if there is an error
 
-USER_ID=$(id -u)
-if [ $USER_ID -ne 0 ] ; then
-    echo -e "\e[31m You may need to run it as a root user only. \e[0m"
-    exit 1
-fi
 
 #COMPONENT=frontend
+
+source components/common.sh   # validating if its a root user in common.sh
+
 
 
 
