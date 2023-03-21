@@ -46,4 +46,4 @@ rm -rf frontend-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
-echo -e -------------- "\e[31m $COMPONENT configuration. \e[0m"--------------------
+echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
