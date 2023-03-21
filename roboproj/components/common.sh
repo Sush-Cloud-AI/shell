@@ -28,8 +28,8 @@ NODEJS(){
     stat $?
 
     echo -n "Inastalling NodeJS: "
-    yum install nodejs -y  
-    stat $
+    yum install nodejs -y  &>> $LOG_FILE
+    stat $?
 
     USER_CREA
 
