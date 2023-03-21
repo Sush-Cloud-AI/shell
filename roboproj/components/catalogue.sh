@@ -33,10 +33,11 @@ stat $?
 echo -n "Extracting the $COMPONENT: "
 cd /home/roboshop
 unzip -o /tmp/catalogue.zip &>> $LOG_FILE
+mv catalogue-main catalogue && chown -R roboshop:roboshop $COMPONENT
+cd $COMPONENT
 stat $?
 
 echo -n "Installing the $COMPONENT: "
-mv catalogue-main catalogue
-cd /home/roboshop/catalogue
+
 npm install &>> $LOG_FILE
 stat $?
