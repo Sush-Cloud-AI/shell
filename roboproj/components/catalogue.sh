@@ -13,6 +13,16 @@ source components/common.sh   # validating if its a root user in common.sh
 # CALLING NODE JS FUNCTION FROM COMMON FILE 
 NODEJS
 
+USER_CREA
+
+REPO_DOWN
+
+CLEAN_UP
+
+EXTRACT_COMP
+
+INSTALL_COMP
+
 
 echo -n "Configuring the service: "
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' systemd.service

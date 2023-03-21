@@ -30,16 +30,13 @@ NODEJS(){
     yum install nodejs -y  &>> $LOG_FILE
     stat $?
 
-    USER_CREA
 
-    REPO_DOWN
-
-    CLEAN_UP
-
-    EXTRACT_COMP
-
-    INSTALL_COMP
 }
+
+
+
+
+
 
 USER_CREA(){
     echo -n "Creating roboshop user: "
