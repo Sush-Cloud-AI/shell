@@ -36,7 +36,7 @@ rm -rf *
 stat $?
 
 echo -n "Extracting the $COMPONENT: "
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>> $LOG_FILE
 stat $?
 
 echo -n "Updating the Proxy file: "
