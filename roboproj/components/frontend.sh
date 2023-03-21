@@ -6,8 +6,8 @@ LOG_FILE="/tmp/$COMPONENT.log"
 
 source components/common.sh   # validating if its a root user in common.sh
 
-echo -n "Installing Nginx: " &>> $LOG_FILE  # -n : cursor wont move to the next line
-yum install nginx -y
+echo -n "Installing Nginx: "  # -n : cursor wont move to the next line
+yum install nginx -y  &>> $LOG_FILE
 
 if [ $? -eq 0 ] ; then
     echo -e  "\e[32m SUCCESS. \e[0m"
