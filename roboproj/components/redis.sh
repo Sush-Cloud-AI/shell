@@ -8,8 +8,9 @@ APP_USER=roboshop
 
 
 echo -n "Downloading $COMPONENT repo: "
-curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> $LOG_FILE
+curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
 stat $?
+
 
 echo -n "Inastalling  $COMPONENT: "
 yum install redis-6.2.11 -y  &>> $LOG_FILE
