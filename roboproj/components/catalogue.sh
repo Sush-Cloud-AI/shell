@@ -38,5 +38,5 @@ stat $?
 echo -n "Installing the $COMPONENT: "
 mv catalogue-main catalogue
 cd /home/roboshop/catalogue
-npm install
+npm install &>> $LOG_FILE
 stat $?
