@@ -5,6 +5,7 @@ set -e # will exit the script if there is an error
 
 COMPONENT=catalogue
 LOG_FILE="/tmp/$COMPONENT.log"
+APP_USER=roboshop
 
 COMPONENT_URL="https://github.com/stans-robot-project/catalogue/archive/main.zip"
 source components/common.sh   # validating if its a root user in common.sh
@@ -19,7 +20,7 @@ stat $?
 
 
 echo -n "Creating roboshop user: "
-id roboshop &>> $LOG_FILE || useradd roboshop
+id roboshop &>> $LOG_FILE || useradd $APP_USER
 stat $?
 
 echo -n "Download the  $COMPONENT code: "
@@ -27,17 +28,29 @@ curl -s -L -o /tmp/catalogue.zip $COMPONENT_URL  &>> $LOG_FILE
 stat $?
 
 echo -n "Performing cleanup: "
-cd /home/roboshop/ && rm -rf $COMPONENT &>> $LOG_FILE
+cd /home/$APP_USER/ && rm -rf $COMPONENT &>> $LOG_FILE
 stat $?
 
 echo -n "Extracting the $COMPONENT: "
 cd /home/roboshop
 unzip -o /tmp/catalogue.zip &>> $LOG_FILE
-mv catalogue-main catalogue && chown -R roboshop:roboshop $COMPONENT
+mv $COMPONENT-main $COMPONENT && chown -R $APP_USER:$APP_USER $COMPONENT
 cd $COMPONENT
 stat $?
 
 echo -n "Installing the $COMPONENT: "
-
 npm install &>> $LOG_FILE
 stat $?
+
+echo -n "Configuring the service: "
+sed -i -e 's/MONGO_DNSNAME/mongodb.$APP_USER.internal/' systemd.service
+mv /home/$APP_USER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
+
+echo -n "Starting $COMPONENT service: "
+systemctl daemon-reload
+systemctl restart $COMPONENT
+systemctl enable $COMPONENT
+stat $?
+
+echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
