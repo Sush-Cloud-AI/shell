@@ -6,12 +6,9 @@ COMPONENT=redis
 LOG_FILE="/tmp/$COMPONENT.log"
 APP_USER=roboshop
 
-REDIS_REPO_URL="https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo"
-
-
 
 echo -n "Downloading $COMPONENT repo: "
-curl -s -o $REDIS_REPO_URL /etc/yum.repos.d/redis.repo  &>> $LOG_FILE
+curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> $LOG_FILE
 stat $?
 
 echo -n "Inastalling  $COMPONENT: "
