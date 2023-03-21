@@ -69,7 +69,7 @@ EXTRACT_COMP(){
     stat $?
 }
 
-INSTALL_COMP{
+INSTALL_COMP(){
     echo -n "Installing the $COMPONENT: "
     npm install &>> $LOG_FILE
     stat $?
