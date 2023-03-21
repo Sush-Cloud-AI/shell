@@ -7,6 +7,7 @@ source components/common.sh
 COMPONENT=user
 LOG_FILE="/tmp/$COMPONENT.log"
 APP_USER=roboshop
+REPO_VAR=main
 
 
 
@@ -22,7 +23,16 @@ CLEAN_UP
 
 #EXTRACT_COMP
 
-#INSTALL_COMP
+EXTRACT_COMP(){
+    echo -n "Extracting the $COMPONENT: "
+    cd /home/roboshop/
+    unzip -o /tmp/$REPO_VAR.zip &>> $LOG_FILE
+    mv $COMPONENT-main $COMPONENT && chown -R $APP_USER:$APP_USER $COMPONENT
+    cd $COMPONENT
+    stat $?
+}
+
+INSTALL_COMP
 
 
 
