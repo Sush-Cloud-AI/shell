@@ -61,10 +61,10 @@ CLEAN_UP(){
 
 EXTRACT_COMP(){
     echo -n "Extracting the $COMPONENT: "
-    cd /home/roboshop
-    unzip -o /tmp/${COMPONENT}.zip &>> $LOG_FILE
-    mv ${COMPONENT}-main ${COMPONENT} && chown -R $APP_USER:$APP_USER $COMPONENT
-    cd ${COMPONENT}
+    cd /home/roboshop/
+    unzip -o /tmp/$COMPONENT.zip &>> $LOG_FILE
+    mv $COMPONENT-main $COMPONENT && chown -R $APP_USER:$APP_USER $COMPONENT
+    cd $COMPONENT
     stat $?
 }
 
