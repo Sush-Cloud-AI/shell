@@ -1,7 +1,7 @@
 COMPONENT=mysql
 LOG_FILE="/tmp/$COMPONENT.log"
 MYSQL_REPO_URL=" https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo"
-#COMPONENT_URL="https://github.com/stans-robot-project/mongodb/archive/main.zip"
+COMPONENT_URL="https://github.com/stans-robot-project/mysql/archive/main.zip"
 source components/common.sh   # validating if its a root user in common.sh
 
 echo -n "Downloading $COMPONENT repo: "
@@ -34,3 +34,19 @@ if [ $? -eq 0 ]; then
     mysql --connect-expired-password -uroot -pRoboShop@1 < /tmp/rootpassword_chng.sql  &>> $LOG_FILE
     stat $?
 fi
+
+echo -n "Downloading the schema: "
+curl -s -L -o /tmp/mysql.zip $COMPONENT_URL
+stat $?
+
+echo -n "Extracting the schema: "
+cd /tmp
+unzip -o mysql.zip &>> $LOG_FILE
+stat $?
+
+echo -n "Injecting the schema: "
+cd mysql-main
+mysql -u root -pRoboShop@1 <shipping.sql &>> $LOG_FILE
+stat $?
+
+echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
