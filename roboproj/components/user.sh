@@ -26,7 +26,7 @@ CLEAN_UP
 
 
 
-EXTRACT_COMP(){
+EXTRACT_COM(){
     echo -n "Extracting the $COMPONENT: "
     cd /home/roboshop/
     unzip -o /tmp/main.zip &>> $LOG_FILE
@@ -35,18 +35,18 @@ EXTRACT_COMP(){
     stat $?
 }
 
-EXTRACT_COMP
+EXTRACT_COM
 
-#INSTALL_COMP
+INSTALL_COMP
 
 
 
-#echo -n "Configuring the service: "
-#sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' systemd.service
-#mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
-#stat $?
+echo -n "Configuring the service: "
+sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' systemd.service
+mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+stat $?
 
-#SERVICE_START   # service start function
+SERVICE_START   # service start function
 
 
 #echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
