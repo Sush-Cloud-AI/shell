@@ -33,9 +33,11 @@ pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
 echo -n "Updating the $COMPONENT.ini file: "
-USER_ID=$(id -u roboshop)
-GROUP_ID=$(id -g roboshop)
-sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" payment.ini
+UR_ID=$(id -u roboshop)
+GP_ID=$(id -g roboshop)
+echo $UR_ID
+echo $GP_ID
+sed -i -e "/uid/ c uid = $UR_ID" -e "/gid/ c gid = $GP_ID" payment.ini
 stat $?
 
 echo -n "Configuring the service: "
