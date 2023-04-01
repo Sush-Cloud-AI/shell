@@ -28,7 +28,7 @@ EXTRACT_COM(){
 }
 
 echo -n "Installing dependencies: "
-cd /home/roboshop/payment 
+#cd /home/roboshop/payment 
 pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
