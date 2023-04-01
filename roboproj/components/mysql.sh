@@ -13,6 +13,11 @@ yum install mysql-community-server -y  &>> $LOG_FILE
 stat $?
 
 echo -n "Starting and enabling $COMPONENT: "
-systemctl enable mysqld  &>> $LOG_FILE
-systemctl restart mysqld  &>> $LOG_FILE
+systemctl enable mysqld  &>> $LOG_FILE && systemctl restart mysqld  &>> $LOG_FILE
+stat $?
+
+echo -n "Changing the default root password: "
+DEF_PASSW=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
+echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/rootpassw.sql
+mysql --connect-expired-password -uroot -p"$DEF_PASSW" < /tmp/rootpassw.sql
 stat $?
