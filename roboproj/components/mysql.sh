@@ -25,3 +25,12 @@ if [ 0 -ne $? ]; then
     mysql --connect-expired-password -uroot -p"$DEF_PASSW" < /tmp/rootpassw.sql
     stat $?
 fi
+
+echo "show plugins" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE | grep validate_password &>> $LOG_FILE
+ 
+if [ 0 -eq $? ]; then
+    echo -n "uninstalling validate password plugin: "
+    echo 'uninstall plugin validate_password;' &>> $LOG_FILE
+    mysql --connect-expired-password -uroot -p"$DEF_PASSW" &>> $LOG_FILE
+    stat $?
+fi
