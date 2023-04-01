@@ -45,3 +45,6 @@ mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONEN
 stat $?
 
 SERVICE_START
+
+
+echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
