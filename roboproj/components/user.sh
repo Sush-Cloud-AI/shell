@@ -49,4 +49,4 @@ stat $?
 SERVICE_START   # service start function
 
 
-#echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
+echo -e -------------- "\e[33m $COMPONENT configuration completed. \e[0m"--------------------
