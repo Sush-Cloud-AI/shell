@@ -16,9 +16,9 @@ stat $?
 
 systemctl enable nginx &>> $LOG_FILE
 
-echo -n "Starting Nginx: "
-systemctl start nginx &>> $LOG_FILE
-stat $?
+#echo -n "Starting Nginx: "
+#systemctl start nginx &>> $LOG_FILE
+#stat $?
 
 echo -n "Downloading the Repo: "
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip" &>> $LOG_FILE
