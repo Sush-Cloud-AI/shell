@@ -4,6 +4,7 @@ MYSQL_REPO_URL=" https://raw.githubusercontent.com/stans-robot-project/mysql/mai
 #COMPONENT_URL="https://github.com/stans-robot-project/mongodb/archive/main.zip"
 source components/common.sh   # validating if its a root user in common.sh
 
+set -e 
 echo -n "Downloading $COMPONENT repo: "
 curl -s -o /etc/yum.repos.d/mysql.repo $MYSQL_REPO_URL &>> $LOG_FILE
 stat $?
