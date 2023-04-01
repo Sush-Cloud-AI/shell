@@ -19,7 +19,7 @@ USER_CREA
 
 echo -n "Downloading the repo:  "
 cd /tmp/
-wget https://github.com/stans-robot-project/user/archive/main.zip
+wget https://github.com/stans-robot-project/user/archive/main.zip &>> $LOG_FILE
 
 stat $?
 
