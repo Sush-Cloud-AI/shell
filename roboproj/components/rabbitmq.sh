@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-set -e # will exit the script if there is an error
+#set -e # will exit the script if there is an error
 source components/common.sh
 
 COMPONENT=rabbitmq
@@ -30,7 +30,7 @@ systemctl restart rabbitmq-server &>> $LOG_FILE
 systemctl enable rabbitmq-server &>> $LOG_FILE
 stat $?
 
-rabbitmqctl list_users |grep roboshop &>> $LOG_FILE
+rabbitmqctl list_users | grep roboshop &>> $LOG_FILE
 
 if [ $? -ne 0 ] ; then
     echo -n "Create $APP_USER for $COMPONENT: "
