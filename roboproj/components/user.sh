@@ -18,7 +18,6 @@ NODEJS
 USER_CREA
 
 echo -n "Downloading the repo:  "
-cd /tmp/
 curl -s -L -o /tmp/user.zip "https://github.com/stans-robot-project/user/archive/main.zip" &>> $LOG_FILE
 
 stat $?
