@@ -20,11 +20,21 @@ USER_CREA
 echo -n "Downloading the repo:  "
 cd /tmp/
 wget https://github.com/stans-robot-project/user/archive/main.zip
-cd /home/roboshop
+
 stat $?
 
 CLEAN_UP
 
+
+
+EXTRACT_COMP(){
+    echo -n "Extracting the $COMPONENT: "
+    cd /home/roboshop/
+    unzip -o /tmp/main.zip &>> $LOG_FILE
+    mv $COMPONENT-main $COMPONENT && chown -R $APP_USER:$APP_USER $COMPONENT
+    cd $COMPONENT
+    stat $?
+}
 
 #EXTRACT_COMP
 
