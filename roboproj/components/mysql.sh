@@ -30,7 +30,7 @@ echo "show plugins" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE | grep validate_pa
  
 if [ 0 -eq $? ]; then
     echo -n "uninstalling validate password plugin: "
-    echo 'uninstall plugin validate_password;' &>> $LOG_FILE
+    echo 'uninstall plugin validate_password;' > /tmp/rootpassword_chng.sql
     mysql --connect-expired-password -uroot -p"$DEF_PASSW" &>> $LOG_FILE
     stat $?
 fi
