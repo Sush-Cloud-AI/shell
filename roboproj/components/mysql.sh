@@ -16,7 +16,7 @@ echo -n "Starting and enabling $COMPONENT: "
 systemctl enable mysqld  &>> $LOG_FILE && systemctl restart mysqld  &>> $LOG_FILE
 stat $?
 
-echo "show databases" | mysql -uroot -pRoboShop@1
+echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE
  
 fi [0 -ne $?]; then 
     echo -n "Changing the default root password: "
