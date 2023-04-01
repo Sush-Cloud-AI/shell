@@ -18,7 +18,7 @@ stat $?
 
 echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE
  
-if [0 -ne $?]; then 
+if [ 0 -ne $? ]; then 
     echo -n "Changing the default root password: "
     DEF_PASSW=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/rootpassw.sql
