@@ -6,8 +6,7 @@ APP_USER=roboshop
 source components/common.sh   # validating if its a root user in common.sh
 
 echo -n "Installing Maven: "
-yum install maven -y
-stat $?
+yum install maven -y  &>> $LOG_FILE
 
 USER_CREA
 
