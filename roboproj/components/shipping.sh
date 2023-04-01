@@ -23,7 +23,7 @@ mv target/shipping-1.0.jar shipping.jar
 stat $?
 
 echo -n "Configuring the service: "
-sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal' systemd.service
+sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' systemd.service
 mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
