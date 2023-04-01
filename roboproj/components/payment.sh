@@ -27,9 +27,14 @@ EXTRACT_COM(){
     stat $?
 }
 EXTRACT_COM
+
 echo -n "Installing dependencies: "
 cd /home/roboshop/payment 
 pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
-#sed -i -e '
+echo -n "Updating the $COMPONENT.ini file: "
+USER_ID=$(id -u roboshop)
+GROUP_ID=$(id -g roboshop)
+sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" payment.ini
+stat $?
