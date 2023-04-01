@@ -18,7 +18,7 @@ stat $?
 
 echo "show databases" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE
  
-if [ 0 -ne $? ]; then 
+if [ 0 -ne $? ] ; then 
     echo -n "Changing the default root password: "
     DEF_PASSW=$(sudo grep "temporary password" /var/log/mysqld.log | awk '{print $NF}')
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('RoboShop@1');" > /tmp/rootpassw.sql
@@ -30,7 +30,7 @@ echo "show plugins" | mysql -uroot -pRoboShop@1 &>> $LOG_FILE | grep validate_pa
  
 if [ 0 -eq $? ]; then
     echo -n "uninstalling validate password plugin: "
-    echo 'uninstall plugin validate_password;' &>> $LOG_FILE
+    echo 'uninstall plugin validate_password;' &>> 
     mysql --connect-expired-password -uroot -p"$DEF_PASSW" &>> $LOG_FILE
     stat $?
 fi
