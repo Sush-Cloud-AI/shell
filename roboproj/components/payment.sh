@@ -13,7 +13,7 @@ stat $?
 USER_CREA
 
 echo -n "Downloading the repo:  "
-curl -s -L -o /tmp/main.zip "https://github.com/stans-robot-project/user/archive/main.zip" &>> $LOG_FILE
+curl -s -L -o /tmp/main.zip "https://github.com/stans-robot-project/payment/archive/main.zip" &>> $LOG_FILE
 stat $?
 
 CLEAN_UP
