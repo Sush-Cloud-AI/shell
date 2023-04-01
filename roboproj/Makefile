@@ -15,3 +15,6 @@ user:
 
 cart:
 	sh components/cart.sh
+
+mysql:
+	sh components/mysql.sh	
