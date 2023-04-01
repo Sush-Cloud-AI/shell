@@ -1,4 +1,4 @@
-#set -e # will exit the script if there is an error
+set -e # will exit the script if there is an error
 
 source components/common.sh
 
@@ -29,7 +29,6 @@ EXTRACT_COM(){
 EXTRACT_COM
 
 echo -n "Installing dependencies: "
-cd /home/roboshop/payment 
 pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
@@ -39,10 +38,10 @@ stat $?
 #sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" payment.ini
 #stat $?
 
-echo -n "Configuring the service: "
-sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' systemd.service
-mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
-stat $?
+#echo -n "Configuring the service: "
+#sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' systemd.service
+#mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+#stat $?
 
 SERVICE_START
 
