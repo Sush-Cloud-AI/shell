@@ -1,4 +1,4 @@
-set -e # will exit the script if there is an error
+#set -e # will exit the script if there is an error
 
 source components/common.sh
 
@@ -33,11 +33,11 @@ cd /home/roboshop/payment
 pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
-echo -n "Updating the $COMPONENT.ini file: "
-USER_ID=$(id -u roboshop)
-GROUP_ID=$(id -g roboshop)
-sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" payment.ini
-stat $?
+#echo -n "Updating the $COMPONENT.ini file: "
+#USER_ID=$(id -u roboshop)
+#GROUP_ID=$(id -g roboshop)
+#sed -i -e "/uid/ c uid = $USER_ID" -e "/gid/ c gid = $GROUP_ID" payment.ini
+#stat $?
 
 echo -n "Configuring the service: "
 sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' systemd.service
