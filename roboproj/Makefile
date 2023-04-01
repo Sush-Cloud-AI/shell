@@ -20,4 +20,10 @@ mysql:
 	sh components/mysql.sh
 
 shipping:
-	sh components/shipping.sh	
+	sh components/shipping.sh
+
+rabbitmq:
+	sh components/rabbitmq.sh
+
+payment:
+	sh components/payment.sh
