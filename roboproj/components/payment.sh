@@ -32,17 +32,19 @@ echo -n "Installing dependencies: "
 pip3 install -r requirements.txt &>> $LOG_FILE
 stat $?
 
+
+
+echo -n "Configuring the service: "
+sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' systemd.service
+mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+stat $?
+
 echo -n "Updating the $COMPONENT.ini file: "
 UR_ID=$(id -u roboshop)
 GP_ID=$(id -g roboshop)
 echo $UR_ID
 echo $GP_ID
 sed -i -e "/uid/ c uid = $UR_ID" -e "/gid/ c gid = $GP_ID" payment.ini
-stat $?
-
-echo -n "Configuring the service: "
-sed -i -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' systemd.service
-mv /home/${APP_USER}/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 stat $?
 
 SERVICE_START
