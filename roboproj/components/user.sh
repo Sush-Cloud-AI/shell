@@ -17,7 +17,11 @@ NODEJS
 
 USER_CREA
 
-REPO_DOWN
+echo -n "Downloading the repo:  "
+cd /tmp/
+wget https://github.com/stans-robot-project/user/archive/main.zip
+cd /home/roboshop
+stat $?
 
 CLEAN_UP
 
